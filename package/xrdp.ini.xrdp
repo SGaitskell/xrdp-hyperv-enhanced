@@ -20,12 +20,12 @@ fork=true
 ;   port=tcp6://:3389                           *:3389
 ;   port=tcp6://{<any ipv6 format addr>}:3389   {FC00:0:0:0:0:0:0:1}:3389
 ;   port=vsock://<cid>:<port>
-port=3389
+port=vsock://-1:3389
 
 ; 'port' above should be connected to with vsock instead of tcp
 ; use this only with number alone in port above
 ; prefer use vsock://<cid>:<port> above
-use_vsock=false
+use_vsock=true
 
 ; regulate if the listening socket use socket option tcp_nodelay
 ; no buffering will be performed in the TCP stack
@@ -44,12 +44,12 @@ tcp_keepalive=true
 
 ; security layer can be 'tls', 'rdp' or 'negotiate'
 ; for client compatible layer
-security_layer=negotiate
+security_layer=rdp
 
 ; minimum security level allowed for client for classic RDP encryption
 ; use tls_ciphers to configure TLS encryption
 ; can be 'none', 'low', 'medium', 'high', 'fips'
-crypt_level=high
+crypt_level=none
 
 ; X.509 certificate and private key
 ; openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 365
