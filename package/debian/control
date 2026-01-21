@@ -1,0 +1,14 @@
+Source: xrdp-hyperv-enhanced
+Section: misc
+Priority: optional
+Maintainer: Scott Gaitskell <you@example.com>
+Build-Depends: debhelper-compat (= 13), config-package-dev (>= 5.5)
+Standards-Version: 4.7.0
+
+Package: xrdp-hyperv-enhanced
+Architecture: all
+Depends: ${misc:Depends}, xrdp, pipewire-module-xrdp, dbus-x11
+Description: Enable Hyper-V Enhanced Session
+  This package configures xrdp to enable Hyper-V Enhanced Session.
+  It replaces startwm.sh, sesman.ini and xrdp.ini using dpkg-divert.
+  Removing this package restores the original XRDP configuration.
