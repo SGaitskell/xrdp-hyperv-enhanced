@@ -1,3 +1,10 @@
+xrdp-hyperv-enhanced (0.1.1) unstable; urgency=medium
+
+  * Added support for Desktops other than GNOME.
+  * Added Policy Rules to allow system changes.
+
+ -- Scott Gaitskell <sgaitskell@local>  Thu, 29 Jan 2026 00:00:00 +0800
+
 xrdp-hyperv-enhanced (0.1.0) unstable; urgency=medium
 
   * Initial release.
