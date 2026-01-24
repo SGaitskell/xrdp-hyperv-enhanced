@@ -4,8 +4,8 @@
 
 # Set environment for GNOME session
 # Otherwise GNOME won't be responsive on start
-export XDG_CURRENT_DESKTOP=GNOME:GNOME-Flashback
-export XDG_SESSION_DESKTOP=xrdp
+export XDG_CURRENT_DESKTOP=GNOME
+export XDG_SESSION_DESKTOP=gnome
 
 # Disable idle-delay
 # Screen blanking causes clipboard sync to stall
