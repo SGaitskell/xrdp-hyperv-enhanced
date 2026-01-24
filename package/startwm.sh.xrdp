@@ -2,14 +2,37 @@
 # xrdp X session start script (c) 2015, 2017, 2021 mirabilos
 # published under The MirOS Licence
 
-# Set environment for GNOME session
-# Otherwise GNOME won't be responsive on start
-export XDG_CURRENT_DESKTOP=GNOME
-export XDG_SESSION_DESKTOP=gnome
+if [ -f /usr/share/xsessions/gnome.desktop ]; then
+	# Set environment for GNOME session
+	# Otherwise GNOME won't be responsive on start
+	export XDG_CURRENT_DESKTOP=GNOME
+	export XDG_SESSION_DESKTOP=gnome
 
-# Disable idle-delay
-# Screen blanking causes clipboard sync to stall
-gsettings set org.gnome.desktop.session idle-delay 0
+	# Disable idle-delay
+	# Screen blanking causes clipboard sync to stall
+	gsettings set org.gnome.desktop.session idle-delay 0
+elif [ -f /usr/share/xsessions/xfce.desktop ]; then
+	export XDG_CURRENT_DESKTOP=XFCE
+	export XDG_SESSION_DESKTOP=lightdm-xsession
+elif [ -f /usr/share/xsessions/gnome-flashback-metacity.desktop ]; then
+	export XDG_CURRENT_DESKTOP=GNOME-Flashback:GNOME
+	export XDG_SESSION_DESKTOP=gnome-flashback-metacity
+elif [ -f /usr/share/xsessions/plasmax11.desktop ]; then
+	export XDG_CURRENT_DESKTOP=KDE
+	export XDG_SESSION_DESKTOP=KDE
+elif [ -f /usr/share/xsessions/cinnamon.desktop ]; then
+	export XDG_CURRENT_DESKTOP=X-Cinnamon
+	export XDG_SESSION_DESKTOP=lightdm-xsession
+elif [ -f /usr/share/xsessions/mate.desktop ]; then
+	export XDG_CURRENT_DESKTOP=MATE
+	export XDG_SESSION_DESKTOP=lightdm-xsession
+elif [ -f /usr/share/xsessions/lxde.desktop ]; then
+	export XDG_CURRENT_DESKTOP=LXDE
+	export XDG_SESSION_DESKTOP=lightdm-xsession
+elif [ -f /usr/share/xsessions/lxqt.desktop ]; then
+	export XDG_CURRENT_DESKTOP=LXQt
+	export XDG_SESSION_DESKTOP=LXQt
+fi
 
 # Rely on /etc/pam.d/xrdp-sesman using pam_env to load both
 # /etc/environment and /etc/default/locale to initialise the
