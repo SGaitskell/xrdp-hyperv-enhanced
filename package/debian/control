@@ -7,7 +7,7 @@ Standards-Version: 4.7.0
 
 Package: xrdp-hyperv-enhanced
 Architecture: all
-Depends: ${misc:Depends}, xrdp, pipewire-module-xrdp, dbus-x11
+Depends: ${misc:Depends}, xrdp, pipewire-audio, pipewire-module-xrdp, dbus-x11
 Description: Enable Hyper-V Enhanced Session
   This package configures xrdp to enable Hyper-V Enhanced Session.
   It replaces startwm.sh, sesman.ini and xrdp.ini using dpkg-divert.
