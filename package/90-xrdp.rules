@@ -1,0 +1,64 @@
+// Combined polkit rules xrdp, to limit authentication prompts
+
+// Allow cdrom eject
+polkit.addRule(function (action, subject) {
+    if (action.id == "org.freedesktop.udisks2.eject-media-other-seat" &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow hostname changes
+polkit.addRule(function (action, subject) {
+    if ((action.id == "org.freedesktop.hostname1.set-static-hostname" ||
+        action.id == "org.freedesktop.hostname1.set-hostname") &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow locale/keyboard changes
+polkit.addRule(function (action, subject) {
+    if ((action.id == "org.freedesktop.locale1.set-locale" ||
+        action.id == "org.freedesktop.locale1.set-keyboard") &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow GNOME Control Center datetime changes
+polkit.addRule(function (action, subject) {
+    if (action.id == "org.gnome.controlcenter.datetime.configure" &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow PackageKit actions (upgrades / refresh)
+polkit.addRule(function (action, subject) {
+    if ((action.id == "org.freedesktop.packagekit.upgrade-system" ||
+        action.id == "org.freedesktop.packagekit.trigger-offline-update" ||
+        action.id == "org.freedesktop.packagekit.system-sources-refresh") &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow NetworkManager control
+polkit.addRule(function (action, subject) {
+    if (action.id == "org.freedesktop.NetworkManager.network-control" &&
+        subject.active &&
+        (subject.isInGroup("sudo") || subject.isInGroup("netdev"))) {
+        return polkit.Result.YES;
+    }
+});
+
+// Allow power actions (reboot / power-off / power profiles)
+polkit.addRule(function (action, subject) {
+    if ((action.id == "org.freedesktop.login1.reboot" ||
+        action.id == "org.freedesktop.login1.power-off" ||
+        action.id == "org.freedesktop.UPower.PowerProfiles.switch-profile") &&
+        subject.active && subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});

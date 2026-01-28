@@ -1,3 +1,5 @@
 startwm.sh.xrdp	etc/xrdp/
 sesman.ini.xrdp	etc/xrdp/
 xrdp.ini.xrdp	etc/xrdp/
+
+90-xrdp.rules  etc/polkit-1/rules.d/
